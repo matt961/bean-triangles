@@ -54,7 +54,7 @@ public class TestTriangleFinder {
     }
 
     @Test
-    public void testWithInvalidGraph() throws Exception {
+    public void testWithInvalidGraph() {
         try {
             new TriangleFinder<>(GraphBuilder.directed().build(), true);
             new TriangleFinder<>(GraphBuilder.undirected().allowsSelfLoops(true).build(), true);
