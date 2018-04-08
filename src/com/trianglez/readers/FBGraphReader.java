@@ -31,7 +31,7 @@ public class FBGraphReader {
             FBPageNode node1 = new FBPageNode(node1ID, category);
             FBPageNode node2 = new FBPageNode(node2ID, category);
 
-            // gets category of the FB page from file name
+            // gets category of the FB page uniqueTriangles file name
             if (!node1.equals(node2))
                 this.graph.putEdge(node1, node2);
         });

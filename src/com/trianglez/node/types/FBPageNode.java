@@ -63,7 +63,7 @@ public class FBPageNode extends Node {
     }
 
     /**
-     * @param node A {@link Node} to get primitives from.
+     * @param node A {@link Node} to get primitives uniqueTriangles.
      * @param primitiveSink The sink to funnel said primitives.
      */
     @Override @ParametersAreNonnullByDefault

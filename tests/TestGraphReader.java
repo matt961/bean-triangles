@@ -15,10 +15,10 @@ public class TestGraphReader {
      * the graph data used for testing.
      *
      * This test will estimate the number of edges within an error of 1000 because self-referential edges get dropped.
-     * @throws IOException
+     * @throws IOException The file might not exist or something?
      */
     @Test
-    public void testGraphReader() throws IOException {
+    public void testFBPageReader() throws IOException {
         FBGraphReader graphReader = new FBGraphReader();
         File fbFile2 = Paths.get("testres/artist_edges.csv").toFile();
         graphReader.read(fbFile2);

@@ -14,9 +14,10 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TestTriangleFinder {
-    private Graph<StringNode> g;
+    private MutableGraph<StringNode> g = GraphBuilder.undirected().allowsSelfLoops(false).build();
     private StringNode u;
     private StringNode v;
     private StringNode w;
@@ -24,7 +25,6 @@ public class TestTriangleFinder {
 
     @Before
     public void before() {
-        MutableGraph<StringNode> g = GraphBuilder.undirected().allowsSelfLoops(false).build();
         u = new StringNode("u");
         v = new StringNode("v");
         w = new StringNode("w");
@@ -34,7 +34,6 @@ public class TestTriangleFinder {
         g.putEdge(u, x);
         g.putEdge(v, w);
         g.putEdge(x, w);
-        this.g = g;
     }
 
     @Test
@@ -64,18 +63,65 @@ public class TestTriangleFinder {
         Assert.fail();
     }
 
+    @Test
+    public void testCalculateClustering() throws Exception {
+        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
+        Assert.assertEquals(
+                1.0d,
+                tf.clusteringCoefficient(x),
+                0.001);
+        Assert.assertEquals(
+                0.66666d,
+                tf.clusteringCoefficient(u),
+                0.001);
+        this.g.removeEdge(this.u, this.v);
+        tf.clusteringCoefficient(u);
+        tf.avgClusteringCoefficient();
+    }
+
+    @Test
+    public void testAvgCalculateClustering() throws Exception {
+        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
+        Assert.assertEquals(
+                0.83333,
+                tf.avgClusteringCoefficient(),
+                0.001);
+        tf = new TriangleFinder<>(this.g, true);
+        Assert.assertEquals(
+                0.83333,
+                tf.avgClusteringCoefficient(),
+                0.001);
+    }
+
+    @Test
+    public void testUniqueTriangles() throws Exception {
+        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
+        Set<Triangle<StringNode>> uniqueTrianglesBF = tf.uniqueTriangles(true);
+        Set<Triangle<StringNode>> uniqueTriangleNoBF = tf.uniqueTriangles(false);
+        Assert.assertNotEquals(uniqueTrianglesBF.size(), tf.countLocalTriangles());
+        Assert.assertEquals(uniqueTrianglesBF.size(), uniqueTriangleNoBF.size());
+        Assert.assertEquals(uniqueTrianglesBF.size(), 2);
+
+        System.out.println("All local triangles...");
+        tf.streamTriangles().forEach(System.out::println);
+        System.out.println("Unique triangles only...");
+        uniqueTrianglesBF.forEach(System.out::println);
+
+        System.out.println("List of triangles where only filter mechanism is BloomFilter");
+        tf.uniqueTrianglesBloomOnly().forEach(System.out::println);
+    }
+
     @Ignore("For benchmarking only.")
     @Test
-    public void testBenchmarkParallel() throws Exception {
+    public void benchmarkTriangleFinder() throws Exception {
         FBGraphReader fbGraphReader = new FBGraphReader();
         File[] fbFiles = Paths.get("testres/").toFile().listFiles((dir, name) -> name.endsWith(".csv"));
         if (fbFiles != null) {
-            Arrays.stream(fbFiles).forEach(f ->  {
+            Arrays.stream(fbFiles).forEach(f -> {
                 try {
-                    System.out.println("Reading from file " + f.getName());
+                    System.out.println("Reading uniqueTriangles file " + f.getName());
                     fbGraphReader.read(f);
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     System.err.println("Could not read file " + f.getName());
                 }
             });
@@ -89,39 +135,49 @@ public class TestTriangleFinder {
         long end;
 
         TriangleFinder<FBPageNode> triangleFinder;
-        {
-            start = System.currentTimeMillis();
-            System.out.println("Starting parallel triangle finder...");
-            triangleFinder = new TriangleFinder<>(bigGraph, true);
-            System.out.println("countLocalTriangles = " + String.valueOf(triangleFinder.countLocalTriangles()));
-            end = System.currentTimeMillis();
-            System.out.println(
-                    "Parallel took " + String.valueOf(end - start) + "ms"
-            );
-        }
+        start = System.currentTimeMillis();
+        System.out.println("Starting parallel triangle finder...");
+        triangleFinder = new TriangleFinder<>(bigGraph, true);
+        System.out.println("countLocalTriangles = " + String.valueOf(triangleFinder.countLocalTriangles()));
+        System.out.println("avgClusteringCoefficient = " + triangleFinder.avgClusteringCoefficient());
+        end = System.currentTimeMillis();
+        System.out.println(
+                "...took " + String.valueOf(end - start) + "ms"
+        );
 
-        {
-            System.out.println("Starting sequential triangle finder...");
-            start = System.currentTimeMillis();
-            triangleFinder = new TriangleFinder<>(bigGraph, false);
-            System.out.println("countLocalTriangles = " + String.valueOf(triangleFinder.countLocalTriangles()));
-            end = System.currentTimeMillis();
-            System.out.println(
-                    "Sequential took " + String.valueOf(end - start) + "ms"
-            );
-        }
+        System.out.println("Starting sequential triangle finder...");
+        start = System.currentTimeMillis();
+        triangleFinder = new TriangleFinder<>(bigGraph, false);
+        System.out.println("countLocalTriangles = " + String.valueOf(triangleFinder.countLocalTriangles()));
+        System.out.println("avgClusteringCoefficient = " + triangleFinder.avgClusteringCoefficient());
+        end = System.currentTimeMillis();
+        System.out.println(
+                "...took " + String.valueOf(end - start) + "ms"
+        );
+
+        System.out.println("Finding unique triangles...");
+        start = System.currentTimeMillis();
+        System.out.println("Count of unique triangles = " + triangleFinder.uniqueTriangles(false).size());
+        end = System.currentTimeMillis();
+        System.out.println(
+                "...took " + String.valueOf(end - start) + "ms"
+        );
+
+        System.out.println("Finding unique triangles with bloom filter...");
+        start = System.currentTimeMillis();
+        System.out.println("Count of unique triangles = " + triangleFinder.uniqueTriangles(false).size());
+        end = System.currentTimeMillis();
+        System.out.println(
+                "...took " + String.valueOf(end - start) + "ms"
+        );
+
+        System.out.println("Finding list of triangles relying only on bloom filter...");
+        start = System.currentTimeMillis();
+        System.out.println("Count of unique triangles ≈ " + triangleFinder.uniqueTrianglesBloomOnly().size());
+        end = System.currentTimeMillis();
+        System.out.println(
+                "...took " + String.valueOf(end - start) + "ms"
+        );
     }
 
-    @Test
-    public void testCalculateClustering() throws Exception{
-        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
-        Assert.assertEquals(1.0, tf.clusteringCoefficient(x), 0.001);
-        Assert.assertEquals(0.6666, tf.clusteringCoefficient(u), 0.01);
-    }
-
-    @Test
-    public void testAvgCalculateClustering() throws Exception{
-        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
-        System.out.println(tf.avgClusteringCoefficient());
-    }
 }

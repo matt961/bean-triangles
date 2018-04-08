@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7913c51-a3b3-4850-af2a-3f65db4f56c3" name="Default" comment="small updates, Node now requires override of equals and hashCode">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f7913c51-a3b3-4850-af2a-3f65db4f56c3" name="Default" comment="clustering coefficients and unique set of triangle stuff is completed with tests and benchmarks; done for now!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/trianglez/LocalTriangles.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/trianglez/TriangleFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trianglez/TriangleFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/trianglez/UniqueTriangleFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/trianglez/node/types/FBPageNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trianglez/node/types/FBPageNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/trianglez/readers/FBGraphReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trianglez/readers/FBGraphReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestGraphReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestGraphReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TestTriangleFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestTriangleFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,15 +21,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/project$TestGraphReader_testGraphReader.ic" NAME="TestGraphReader.testGraphReader Coverage Results" MODIFIED="1522917933080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project$TestFBPageNode_testEquals.ic" NAME="TestFBPageNode.testEquals Coverage Results" MODIFIED="1522917401830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project$All_in_project.ic" NAME="All in project Coverage Results" MODIFIED="1522919328542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project$TestTriangle_testEquals.ic" NAME="TestTriangle.testEquals Coverage Results" MODIFIED="1522918202867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/bean_triangles$All_in_project.ic" NAME="All in project Coverage Results" MODIFIED="1523154775409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project$TestFBPageNode_testCompareTo.ic" NAME="TestFBPageNode.testCompareTo Coverage Results" MODIFIED="1522917202885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project$TestStringNode_testEquals.ic" NAME="TestStringNode.testEquals Coverage Results" MODIFIED="1522917813327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project$TestFBPageNode_testEquals.ic" NAME="TestFBPageNode.testEquals Coverage Results" MODIFIED="1522917401830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project$TestFBPageNode_testCompareTo.ic" NAME="TestFBPageNode.testCompareTo Coverage Results" MODIFIED="1522917202885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project$TestGraphReader_testGraphReader.ic" NAME="TestGraphReader.testGraphReader Coverage Results" MODIFIED="1522917933080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bean_triangles$All_in_project.ic" NAME="All in project Coverage Results" MODIFIED="1523171171773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project$TestStringNode_testToString.ic" NAME="TestStringNode.testToString Coverage Results" MODIFIED="1522917637209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project$TestTriangleFinder_testWithInvalidGraph.ic" NAME="TestTriangleFinder.testWithInvalidGraph Coverage Results" MODIFIED="1522918908537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project$All_in_project.ic" NAME="All in project Coverage Results" MODIFIED="1522919328542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
     <option name="myAutoScrollToSource" value="true" />
@@ -34,12 +39,16 @@
       <file leaf-file-name="TriangleFinder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trianglez/TriangleFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="84" column="15" lean-forward="true" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+            <state relative-caret-position="234">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2338#2339#0" expanded="true" />
                 <element signature="e#2370#2371#0" expanded="true" />
+                <element signature="e#5157#5158#0" expanded="true" />
+                <element signature="e#5191#5192#0" expanded="true" />
+                <element signature="e#5235#5236#0" expanded="true" />
+                <element signature="e#5275#5276#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,14 +57,14 @@
       <file leaf-file-name="Triangle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trianglez/Triangle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="270">
+              <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1037#1038#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-                <element signature="e#1783#1784#0" expanded="true" />
-                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#1034#1035#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1780#1781#0" expanded="true" />
+                <element signature="e#1854#1855#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,8 +73,8 @@
       <file leaf-file-name="FBPageNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/types/FBPageNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+            <state relative-caret-position="394">
+              <caret line="60" column="25" lean-forward="true" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UniqueTriangleFinder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/trianglez/UniqueTriangleFinder.java">
+      <file leaf-file-name="TestGraphReader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/TestGraphReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="306">
+              <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestTriangleFinder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestTriangleFinder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/TestTriangleFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+            <state relative-caret-position="288">
+              <caret line="110" column="66" selection-start-line="110" selection-start-column="66" selection-end-line="110" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,20 +109,8 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestUniqueTriangleFinder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="72">
+              <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -121,7 +118,7 @@
       <file leaf-file-name="StringNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/types/StringNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="216">
               <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -132,22 +129,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalTriangles.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/trianglez/LocalTriangles.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestTriangle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/TestTriangle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="540">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -178,7 +163,6 @@
         <option value="$PROJECT_DIR$/src/com/trianglez/FBGraphReader.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/FBPage.java" />
         <option value="$PROJECT_DIR$/tests/TestFBPage.java" />
-        <option value="$PROJECT_DIR$/tests/TestGraphReader.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/Node.java" />
         <option value="$PROJECT_DIR$/tests/StringNOde.java" />
         <option value="$PROJECT_DIR$/tests/StringNode.java" />
@@ -197,12 +181,13 @@
         <option value="$PROJECT_DIR$/tests/TestFBPageNode.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/UniqueTriangles.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/node/Node.java" />
-        <option value="$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java" />
-        <option value="$PROJECT_DIR$/src/com/trianglez/Triangle.java" />
         <option value="$PROJECT_DIR$/tests/TestTriangle.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/UniqueTriangleFinder.java" />
+        <option value="$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java" />
+        <option value="$PROJECT_DIR$/src/com/trianglez/Triangle.java" />
         <option value="$PROJECT_DIR$/src/com/trianglez/TriangleFinder.java" />
         <option value="$PROJECT_DIR$/tests/TestTriangleFinder.java" />
+        <option value="$PROJECT_DIR$/tests/TestGraphReader.java" />
       </list>
     </option>
   </component>
@@ -219,22 +204,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="project" type="cbb8eebc:String" user="project" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="project" type="cbb8eebc:String" user="project" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -284,7 +253,31 @@
             <path>
               <item name="bean-triangles" type="b2602c69:ProjectViewProjectNode" />
               <item name="bean-triangles" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="trianglez" type="462c0819:PsiDirectoryNode" />
+              <item name="node" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bean-triangles" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bean-triangles" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="project" type="cbb8eebc:String" user="project" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="project" type="cbb8eebc:String" user="project" />
+              <item name="src" type="cbb8eebc:String" user="src" />
             </path>
           </expand>
           <select />
@@ -322,7 +315,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestTriangleFinder.testAvgCalculateClustering">
+  <component name="RunManager" selected="JUnit.All in project">
     <configuration name="All in project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -346,11 +339,28 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestTriangleFinder" />
-      <option name="METHOD_NAME" value="testBenchmarkParallel" />
+      <option name="METHOD_NAME" value="benchmarkTriangleFinder" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="" />
+      <option name="VM_PARAMETERS" value="-Xmx4g -Xms2g" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TestTriangleFinder.benchmarkTriangleFinder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestTriangleFinder" />
+      <option name="METHOD_NAME" value="benchmarkTriangleFinder" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -391,30 +401,13 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="TestTriangleFinder.testWithInvalidGraph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestTriangleFinder.testUniqueTriangles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestTriangleFinder" />
-      <option name="METHOD_NAME" value="testWithInvalidGraph" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TestUniqueTriangleFinder.testFrom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestUniqueTriangleFinder" />
-      <option name="METHOD_NAME" value="testFrom" />
+      <option name="METHOD_NAME" value="testUniqueTriangles" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -443,18 +436,18 @@
     <list>
       <item itemvalue="JUnit.Benchmark" />
       <item itemvalue="JUnit.All in project" />
-      <item itemvalue="JUnit.TestTriangleFinder.testWithInvalidGraph" />
-      <item itemvalue="JUnit.TestUniqueTriangleFinder.testFrom" />
       <item itemvalue="JUnit.TestTriangleFinder.testCalculateClustering" />
       <item itemvalue="JUnit.TestTriangleFinder.testAvgCalculateClustering" />
+      <item itemvalue="JUnit.TestTriangleFinder.benchmarkTriangleFinder" />
+      <item itemvalue="JUnit.TestTriangleFinder.testUniqueTriangles" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in project" />
+        <item itemvalue="JUnit.TestTriangleFinder.benchmarkTriangleFinder" />
         <item itemvalue="JUnit.TestTriangleFinder.testAvgCalculateClustering" />
         <item itemvalue="JUnit.TestTriangleFinder.testCalculateClustering" />
-        <item itemvalue="JUnit.All in project" />
-        <item itemvalue="JUnit.TestUniqueTriangleFinder.testFrom" />
-        <item itemvalue="JUnit.TestTriangleFinder.testWithInvalidGraph" />
+        <item itemvalue="JUnit.TestTriangleFinder.testUniqueTriangles" />
       </list>
     </recent_temporary>
   </component>
@@ -480,68 +473,68 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestUniqueTriangleFinder_testFrom - 2018.04.07 at 19h 06m 22s.xml">
-      <configuration name="TestUniqueTriangleFinder.testFrom" configurationId="JUnit" />
+    <history-entry file="Benchmark - 2018.04.07 at 23h 49m 41s.xml">
+      <configuration name="Benchmark" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_project - 2018.04.07 at 19h 30m 28s.xml">
+    <history-entry file="Benchmark - 2018.04.07 at 23h 51m 14s.xml">
+      <configuration name="Benchmark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Benchmark - 2018.04.07 at 23h 52m 15s.xml">
+      <configuration name="Benchmark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_project - 2018.04.07 at 23h 52m 35s.xml">
       <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_project - 2018.04.07 at 19h 33m 07s.xml">
+    <history-entry file="All_in_project - 2018.04.07 at 23h 55m 04s.xml">
       <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 53m 45s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
+    <history-entry file="All_in_project - 2018.04.07 at 23h 56m 49s.xml">
+      <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 55m 02s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
+    <history-entry file="All_in_project - 2018.04.08 at 00h 03m 08s.xml">
+      <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 55m 41s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
+    <history-entry file="All_in_project - 2018.04.08 at 00h 03m 31s.xml">
+      <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 58m 50s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
+    <history-entry file="All_in_project - 2018.04.08 at 00h 04m 22s.xml">
+      <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 59m 18s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestTriangleFinder_testCalculateClustering - 2018.04.07 at 19h 59m 32s.xml">
-      <configuration name="TestTriangleFinder.testCalculateClustering" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestTriangleFinder_testAvgCalculateClustering - 2018.04.07 at 20h 06m 20s.xml">
-      <configuration name="TestTriangleFinder.testAvgCalculateClustering" configurationId="JUnit" />
+    <history-entry file="All_in_project - 2018.04.08 at 00h 06m 15s.xml">
+      <configuration name="All in project" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32789117" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.3270242" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32912722" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32731137" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3270242" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" visible="true" weight="0.32916668" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.108333334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.108333334" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3270242" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32789117" />
-      <window_info active="true" anchor="right" id="Coverage" order="4" side_tool="true" visible="true" weight="0.3294271" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -549,19 +542,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="small updates, Node now requires override of equals and hashCode" />
-    <option name="LAST_COMMIT_MESSAGE" value="small updates, Node now requires override of equals and hashCode" />
+    <MESSAGE value="clustering coefficients and unique set of triangle stuff is completed with tests and benchmarks; done for now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="clustering coefficients and unique set of triangle stuff is completed with tests and benchmarks; done for now!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tests/TestTriangleFinder.java</url>
-          <line>114</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -571,10 +557,10 @@
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -597,6 +583,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -610,6 +600,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -703,10 +697,10 @@
           <caret line="61" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -739,6 +733,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -810,10 +808,10 @@
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -836,6 +834,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -849,6 +851,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -873,16 +879,6 @@
             <element signature="e#703#704#0" expanded="true" />
             <element signature="e#751#752#0" expanded="true" />
             <element signature="e#788#789#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestGraphReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -914,19 +910,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/types/FBPageNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/types/StringNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="216">
           <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -936,17 +922,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/Node.java">
+    <entry file="file://$PROJECT_DIR$/tests/TestTriangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+        <state relative-caret-position="540">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -955,8 +934,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/trianglez/LocalTriangles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="252">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -965,54 +944,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/trianglez/UniqueTriangleFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        <state relative-caret-position="234">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestTriangle.java">
+    <entry file="file://$PROJECT_DIR$/tests/TestUniqueTriangleFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="612">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/trianglez/Triangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="270">
+          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/trianglez/TriangleFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="84" column="15" lean-forward="true" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+        <state relative-caret-position="234">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2338#2339#0" expanded="true" />
             <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#5157#5158#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <element signature="e#5275#5276#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/TestTriangleFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+        <state relative-caret-position="288">
+          <caret line="110" column="66" selection-start-line="110" selection-start-column="66" selection-end-line="110" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/trianglez/node/types/FBPageNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="60" column="25" lean-forward="true" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestGraphReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
