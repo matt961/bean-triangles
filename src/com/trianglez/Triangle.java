@@ -60,4 +60,11 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
     public void funnel(Triangle<N> triangle, PrimitiveSink primitiveSink) {
         triangle.getNodes().forEach(node -> primitiveSink.putInt(node.hashCode()));
     }
+
+    @Override
+    public String toString(){
+        final StringBuilder text = new StringBuilder("(");
+        this.getNodes().forEach((N n) -> text.append(n.toString()).append(","));
+        return text.toString().substring(0,text.length() - 1) +")";
+    }
 }

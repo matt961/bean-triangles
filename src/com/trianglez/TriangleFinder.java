@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class TriangleFinder<N extends Node> {
 
     private Graph<N> g;
-    private List<LocalTriangles<N>> triangles;
+    private Map<N, List<Triangle<N>>> triangles;
     private boolean parallelism;
 
     public TriangleFinder(final Graph<N> g, final boolean parallelism) throws Exception {
@@ -21,6 +21,7 @@ public class TriangleFinder<N extends Node> {
         }
         this.g = g;
         this.parallelism = parallelism;
+        this.triangles = new HashMap<>();
         forEachNode();
     }
 
@@ -29,7 +30,7 @@ public class TriangleFinder<N extends Node> {
      */
     private void forEachNode() {
         Stream<N> nodes = this.parallelism ? this.g.nodes().parallelStream() : this.g.nodes().stream();
-        this.triangles = nodes.map(start -> {
+        List<LocalTriangles<N>> listLocalTriangles = nodes.map(start -> {
             LocalTriangles<N> localTriangles = new LocalTriangles<>(start);
             ArrayList<N> adjNS = new ArrayList<>(this.g.adjacentNodes(start));
             IntStream.range(0, adjNS.size() - 1).forEach(i -> {
@@ -44,6 +45,8 @@ public class TriangleFinder<N extends Node> {
             });
             return localTriangles;
         }).collect(Collectors.toList());
+
+        listLocalTriangles.forEach(x -> this.triangles.put(x.getKey(), x.getTriangles()));
     }
 
     /**
@@ -51,18 +54,25 @@ public class TriangleFinder<N extends Node> {
      * @return Count of all local triangles.
      */
     public long countLocalTriangles() {
-        Stream<LocalTriangles<N>> localTrianglesStream = this.parallelism ?
-                this.triangles.parallelStream() : this.triangles.stream();
+        Stream<N> localTrianglesStream = this.parallelism ?
+                this.triangles.keySet().parallelStream() : this.triangles.keySet().stream();
 
         return localTrianglesStream
-                .map(LocalTriangles::getTriangles)
+                .map(this.triangles::get)
                 .mapToLong(List::size)
                 .sum();
     }
 
-    public Map<N, List<Triangle<N>>> mapOfTriangles() {
-        Map<N, List<Triangle<N>>> tmap = new HashMap<>();
-        this.triangles.forEach(t -> tmap.put(t.getKey(), t.getTriangles()));
-        return tmap;
+    public Map<N, List<Triangle<N>>> getTriangles() {
+        return triangles;
+    }
+
+    /**
+     * Get a stream of all triangles that the TriangleFinder found.
+     */
+    public Stream<Triangle<N>> streamTriangles() {
+        return this.triangles.keySet().stream()
+                .map(this.triangles::get)
+                .flatMap(List::stream);
     }
 }

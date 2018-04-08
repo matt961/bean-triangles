@@ -28,4 +28,11 @@ public class TestTriangle {
         Assert.assertTrue(triangle1.getNodes().containsAll(triangle4.getNodes()));
         Assert.assertFalse(triangle1.getNodes().containsAll(triangle3.getNodes()));
     }
+
+    @Test
+    public void testToString() {
+        Assert.assertEquals(triangle1.toString(),"(One,Three,Two)");
+        Assert.assertEquals(triangle3.toString(),"(Four,Three,Two)");
+        Assert.assertNotEquals(triangle1.toString(), triangle3.toString());
+    }
 }

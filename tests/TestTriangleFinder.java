@@ -46,7 +46,7 @@ public class TestTriangleFinder {
     @Test
     public void testMapOfTriangles() throws Exception {
         TriangleFinder<StringNode> tf = new TriangleFinder<>(g, true);
-        Map<StringNode, List<Triangle<StringNode>>> triangles = tf.mapOfTriangles();
+        Map<StringNode, List<Triangle<StringNode>>> triangles = tf.getTriangles();
         Assert.assertEquals(triangles.get(u).size(), 2);
         Assert.assertEquals(triangles.get(v).size(), 1);
         Assert.assertEquals(triangles.get(w).size(), 2);
