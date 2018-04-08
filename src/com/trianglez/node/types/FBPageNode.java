@@ -39,6 +39,7 @@ public class FBPageNode extends Node {
     /**
      * Overridden for testing true equality between {@link FBPageNode} instances. {@link com.google.common.graph.Graph}
      * misbehaves otherwise.
+     *
      * @param obj The other {@link FBPageNode} object.
      * @return true if objects are the same reference or if their fields match, false if otherwise or if
      * <code>obj</code> is not an instance of {@link FBPageNode}
@@ -55,6 +56,7 @@ public class FBPageNode extends Node {
 
     /**
      * Overridden to use {@link Hashing::murmur3_32} with {@link FBPageNode ::funnel}.
+     *
      * @return the hash code
      */
     @Override
@@ -63,10 +65,11 @@ public class FBPageNode extends Node {
     }
 
     /**
-     * @param node A {@link Node} to get primitives uniqueTriangles.
+     * @param node          A {@link Node} to get primitives uniqueTriangles.
      * @param primitiveSink The sink to funnel said primitives.
      */
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     public void funnel(Node node, PrimitiveSink primitiveSink) {
         FBPageNode fbPageNode = (FBPageNode) node;
         primitiveSink
@@ -74,7 +77,14 @@ public class FBPageNode extends Node {
                 .putString(fbPageNode.getCategory(), Charsets.UTF_8);
     }
 
-    @Override @ParametersAreNonnullByDefault
+    /**
+     * see {@link Node}
+     *
+     * @param o The other FBPageNode.
+     * @return -1, 0, 1 for less than, equal, and greater than.
+     */
+    @Override
+    @ParametersAreNonnullByDefault
     public int compareTo(Node o) {
         FBPageNode fbPageNode = (FBPageNode) o;
         return ComparisonChain.start()

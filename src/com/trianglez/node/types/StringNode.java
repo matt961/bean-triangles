@@ -19,7 +19,8 @@ public class StringNode extends Node {
         return inner;
     }
 
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     public int compareTo(Node o) {
         return this.inner.compareTo(((StringNode) o).inner);
     }
@@ -40,7 +41,8 @@ public class StringNode extends Node {
         return Hashing.murmur3_32().hashObject(this, this).asInt();
     }
 
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     public void funnel(Node o, PrimitiveSink primitiveSink) {
         primitiveSink.putString(
                 ((StringNode) o).inner,

@@ -2,11 +2,12 @@ package com.trianglez;
 
 import com.google.common.graph.Graph;
 import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnel;
 import com.google.common.hash.PrimitiveSink;
 import com.trianglez.node.Node;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
-
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -23,7 +24,6 @@ public class TriangleFinder<N extends Node> {
         }
         this.g = g;
         this.parallelism = parallelism;
-        this.trianglesMap = new HashMap<>();
         forEachNode();
     }
 
@@ -49,6 +49,10 @@ public class TriangleFinder<N extends Node> {
         }).collect(Collectors.toMap(LocalTriangles::getKey, LocalTriangles::getTriangles));
     }
 
+    public Map<N, List<Triangle<N>>> getTriangles() {
+        return trianglesMap;
+    }
+
     /**
      * Sums up the count of each vertex's local trianglesMap in the Graph.
      *
@@ -62,10 +66,6 @@ public class TriangleFinder<N extends Node> {
                 .map(this.trianglesMap::get)
                 .mapToLong(List::size)
                 .sum();
-    }
-
-    public Map<N, List<Triangle<N>>> getTriangles() {
-        return trianglesMap;
     }
 
     /**
@@ -118,10 +118,7 @@ public class TriangleFinder<N extends Node> {
     public Set<Triangle<N>> uniqueTriangles(boolean useBloomFilter) {
         if (useBloomFilter) {
             BloomFilter<Triangle<N>> triangleBloomFilter = BloomFilter.create(
-                    (Triangle<N> nTriangle, PrimitiveSink primitiveSink) ->
-                            nTriangle.getNodes().stream()
-                                    .mapToInt(N::hashCode)
-                                    .forEach(primitiveSink::putInt),
+                    new TriangleFunnel<>(),
                     this.countLocalTriangles());
 
             Set<Triangle<N>> triangleSet = new HashSet<>();
@@ -151,10 +148,7 @@ public class TriangleFinder<N extends Node> {
 
     public List<Triangle<N>> uniqueTrianglesBloomOnly() {
         BloomFilter<Triangle<N>> triangleBloomFilter = BloomFilter.create(
-                (Triangle<N> nTriangle, PrimitiveSink primitiveSink) ->
-                        nTriangle.getNodes().stream()
-                                .mapToInt(N::hashCode)
-                                .forEach(primitiveSink::putInt),
+                new TriangleFunnel<>(),
                 this.countLocalTriangles());
 
         List<Triangle<N>> triangleList = new ArrayList<>();
@@ -189,6 +183,19 @@ public class TriangleFinder<N extends Node> {
 
         List<Triangle<N>> getTriangles() {
             return triangles;
+        }
+    }
+
+    /**
+     * A TriangleFunnel specifically for the BloomFilter. For dumb reasons it won't accept the one that Triangle already
+     * implements. Oh well.
+     * @param <N>
+     */
+    static class TriangleFunnel<N extends Node> implements Funnel<Triangle<N>> {
+        @Override
+        @ParametersAreNonnullByDefault
+        public void funnel(Triangle<N> triangle, PrimitiveSink primitiveSink) {
+            triangle.getNodes().stream().mapToInt(N::hashCode).forEach(primitiveSink::putInt);
         }
     }
 }

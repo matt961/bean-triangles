@@ -6,19 +6,20 @@ import com.google.common.hash.PrimitiveSink;
 import com.trianglez.node.Node;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class that represents two other nodes that can be associated with a second node, which altogether create a Triangle.
  * It is useful to hash a Triangle if they are going to be put into sets.
- * @param <N>
+ *
+ * @param <N> a subclass of Node.
  */
 public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
 
     /**
-     * nodes is a SortedSet of N because {@link Triangle::hashCode} needs to produce the same hash regardless of the
-     * ordering of Triangle constructor. To achieve this, a sorted order iteration needs to be possible in the hashCode
-     * method.
+     * nodes is a sorted list of N because {@link Triangle::hashCode} needs to produce the same hash regardless of the
+     * node ordering. To achieve this, a sorted order iteration needs to be possible for the hashCode method.
      */
     private List<N> nodes;
 
@@ -33,6 +34,7 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
 
     /**
      * Overridden to be used by a Set.
+     *
      * @param obj The other Triangle.
      * @return true if their hashCode matches or is same ref, false if otherwise.
      */
@@ -47,8 +49,9 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
 
     /**
      * Overridden to use in a set containing some generic N type.
-     * <strong>Ordering of node parameters does not matter, the hash will be the same based on intersecting nodes.
+     * <strong>Ordering of node parameters does not matter, the hash will be the same based on content, not order.
      * </strong>
+     *
      * @return hash code
      */
     @Override
@@ -56,15 +59,23 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
         return Hashing.murmur3_32().hashObject(this, this).asInt();
     }
 
-    @Override @ParametersAreNonnullByDefault
+    /**
+     * Overridden for sanity check to make sure order of nodes doesn't matter when calculating the hash.
+     *
+     * @param triangle      A Triangle to funnel primitives from. Since its generic {@link N} overrides
+     *                      {@link Object::hashCode}, its nodes are hashed and inserted as ints into the sink.
+     * @param primitiveSink The sink to funnel primitives to.
+     */
+    @Override
+    @ParametersAreNonnullByDefault
     public void funnel(Triangle<N> triangle, PrimitiveSink primitiveSink) {
         triangle.getNodes().forEach(node -> primitiveSink.putInt(node.hashCode()));
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         final StringBuilder text = new StringBuilder("(");
         this.getNodes().forEach((N n) -> text.append(n.toString()).append(","));
-        return text.toString().substring(0,text.length() - 1) +")";
+        return text.toString().substring(0, text.length() - 1) + ")";
     }
 }

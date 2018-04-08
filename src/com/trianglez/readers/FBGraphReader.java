@@ -5,7 +5,10 @@ import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 import com.trianglez.node.types.FBPageNode;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class FBGraphReader {
     private MutableGraph<FBPageNode> graph;
@@ -17,6 +20,13 @@ public class FBGraphReader {
         this.graph = GraphBuilder.undirected().allowsSelfLoops(false).build();
     }
 
+    /**
+     * Read a file in the format found from data set at https://snap.stanford.edu/data/gemsec_facebook_dataset.html
+     *
+     * @param graphFile A file with the above data format.
+     * @return this object to call read on again.
+     * @throws IOException if the file doesn't exist or something.
+     */
     public FBGraphReader read(File graphFile) throws IOException {
         String category = graphFile.getName().split("_")[0];
         BufferedReader f = new BufferedReader(new FileReader(graphFile));
