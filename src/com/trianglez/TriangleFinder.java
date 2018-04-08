@@ -75,4 +75,15 @@ public class TriangleFinder<N extends Node> {
                 .map(this.triangles::get)
                 .flatMap(List::stream);
     }
+
+    public double clusteringCoefficient(N n){
+        int ki = g.degree(n);
+        int li = this.triangles.get(n).size();
+        return (double)(2*(li))/(ki * (ki - 1));
+    }
+
+    public double avgClusteringCoefficient(){
+        OptionalDouble od = this.triangles.keySet().stream().mapToDouble(this::clusteringCoefficient).average();
+        return od.isPresent()? od.getAsDouble() : -1;
+    }
 }

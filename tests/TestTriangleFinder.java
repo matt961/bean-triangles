@@ -111,4 +111,17 @@ public class TestTriangleFinder {
             );
         }
     }
+
+    @Test
+    public void testCalculateClustering() throws Exception{
+        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
+        Assert.assertEquals(1.0, tf.clusteringCoefficient(x), 0.001);
+        Assert.assertEquals(0.6666, tf.clusteringCoefficient(u), 0.01);
+    }
+
+    @Test
+    public void testAvgCalculateClustering() throws Exception{
+        TriangleFinder<StringNode> tf = new TriangleFinder<>(this.g, false);
+        System.out.println(tf.avgClusteringCoefficient());
+    }
 }
