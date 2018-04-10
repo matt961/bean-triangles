@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Class that represents two other nodes that can be associated with a second node, which altogether create a Triangle.
- * It is useful to hash a Triangle if they are going to be put into sets.
+ * It is useful to hash a Triangle if they are going to be put into a set.
  *
  * @param <N> a subclass of Node.
  */
@@ -33,7 +33,7 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
     }
 
     /**
-     * Overridden to be used by a Set.
+     * Overridden to be usable in HashSet.
      *
      * @param obj The other Triangle.
      * @return true if their hashCode matches or is same ref, false if otherwise.
@@ -48,11 +48,12 @@ public class Triangle<N extends Node> implements Funnel<Triangle<N>> {
     }
 
     /**
-     * Overridden to use in a set containing some generic N type.
-     * <strong>Ordering of node parameters does not matter, the hash will be the same based on content, not order.
+     * Overridden to be usable in {@link java.util.HashSet<N>}.
+     * <strong>Ordering of node parameters from the constructor doesn't matter because the nodes get sorted first. The
+     * same contents will result in the same hash.
      * </strong>
      *
-     * @return hash code
+     * @return murmur3_32 (Integer) hash code
      */
     @Override
     public int hashCode() {

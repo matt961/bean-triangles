@@ -7,6 +7,9 @@ import com.trianglez.node.Node;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+/**
+ * Graph node data used for simple testing.
+ */
 public class StringNode extends Node {
     private String inner;
 

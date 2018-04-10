@@ -24,10 +24,9 @@ public class FBGraphReader {
      * Read a file in the format found from data set at https://snap.stanford.edu/data/gemsec_facebook_dataset.html
      *
      * @param graphFile A file with the above data format.
-     * @return this object to call read on again.
      * @throws IOException if the file doesn't exist or something.
      */
-    public FBGraphReader read(File graphFile) throws IOException {
+    public void read(File graphFile) throws IOException {
         String category = graphFile.getName().split("_")[0];
         BufferedReader f = new BufferedReader(new FileReader(graphFile));
         f.lines().skip(1).forEach(line -> {
@@ -46,7 +45,6 @@ public class FBGraphReader {
                 this.graph.putEdge(node1, node2);
         });
         f.close();
-        return this;
     }
 
     public Graph<FBPageNode> getGraph() {

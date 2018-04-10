@@ -28,7 +28,7 @@ public class TriangleFinder<N extends Node> {
     }
 
     /**
-     * Finds all local trianglesMap for each node in the graph.
+     * Finds all local triangles and initializes sets trianglesMap.
      */
     private void forEachNode() {
         Stream<N> nodes = this.parallelism ? this.g.nodes().parallelStream() : this.g.nodes().stream();
@@ -56,7 +56,7 @@ public class TriangleFinder<N extends Node> {
     /**
      * Sums up the count of each vertex's local trianglesMap in the Graph.
      *
-     * @return Count of all local trianglesMap.
+     * @return Count of all local triangles.
      */
     public long countLocalTriangles() {
         Stream<N> localTrianglesStream = this.parallelism ?
@@ -69,7 +69,9 @@ public class TriangleFinder<N extends Node> {
     }
 
     /**
-     * Get a stream of all trianglesMap that the TriangleFinder found.
+     * Get a flat stream of all local triangles.
+     *
+     * @return Flattened stream of each vertex's local Triangles.
      */
     public Stream<Triangle<N>> streamTriangles() {
         return this.trianglesMap.keySet().stream()
@@ -82,7 +84,7 @@ public class TriangleFinder<N extends Node> {
      * (2 * count(trianglesMap[n]) / (degree[n] * (degree[n] - 1))
      *
      * @param n The node to calculate a clustering coefficient for.
-     * @return clustering coefficient.
+     * @return clustering coefficient of node n.
      */
     public double clusteringCoefficient(N n) {
         double ki = g.degree(n);
@@ -97,7 +99,7 @@ public class TriangleFinder<N extends Node> {
     /**
      * Find total num triangles divided by total num possible triangles.
      *
-     * @return
+     * @return global clustering coefficient.
      */
     public double globalClusteringCoefficient() {
         Stream<N> s = this.parallelism ? this.g.nodes().parallelStream() : this.g.nodes().stream();
@@ -181,7 +183,7 @@ public class TriangleFinder<N extends Node> {
 
     /**
      * Auxiliary class to keep track of local triangles for a node. Gets mapped down into a {@link Map} where
-     * K = {@link N} and V = {@link Set<Triangle>}, {@link Triangle<N>}.
+     * K = {@link N} and V = {@link List<Triangle>}, {@link Triangle<N>}.
      */
     class LocalTriangles {
         private N key;
@@ -202,10 +204,10 @@ public class TriangleFinder<N extends Node> {
     }
 
     /**
-     * A TriangleFunnel specifically for the BloomFilter. For dumb reasons it won't accept the one that Triangle already
-     * implements. Oh well.
+     * A TriangleFunnel specifically for the BloomFilter. Apparently you can't use a method reference to the funnel in
+     * {@link Triangle<N>} because the type parameter doesn't get inferred?
      *
-     * @param <N>
+     * @param <N> Same as the containing class.
      */
     static class TriangleFunnel<N extends Node> implements Funnel<Triangle<N>> {
         @Override
