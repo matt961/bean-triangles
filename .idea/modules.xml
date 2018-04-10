@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bean-trianglez.iml" filepath="$PROJECT_DIR$/bean-trianglez.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bean-triangles.iml" filepath="$PROJECT_DIR$/bean-triangles.iml" />
     </modules>
   </component>
 </project>
