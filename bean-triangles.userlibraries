@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="com.google.guava:guava:24.1-jre">
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/guava-24.1-jre.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/jsr305-1.3.9.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/checker-compat-qual-2.0.0.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/error_prone_annotations-2.1.3.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/j2objc-annotations-1.1.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/animal-sniffer-annotations-1.14.jar" />
+  </library>
+  <library name="junit:junit:4.12">
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/junit-4.12.jar" />
+    <archive path="C:/Users/mattc/school/bean-triangles/lib/hamcrest-core-1.3.jar" />
+  </library>
+</eclipse-userlibraries>
+

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7913c51-a3b3-4850-af2a-3f65db4f56c3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/bean-trianglez.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bean-triangles.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bean-triangles.eml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bean-triangles.userlibraries" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
