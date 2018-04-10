@@ -95,6 +95,21 @@ public class TriangleFinder<N extends Node> {
     }
 
     /**
+     * Find total num triangles divided by total num possible triangles.
+     *
+     * @return
+     */
+    public double globalClusteringCoefficient() {
+        Stream<N> s = this.parallelism ? this.g.nodes().parallelStream() : this.g.nodes().stream();
+        long n = countLocalTriangles();
+        long k = s.mapToLong(node -> {
+            long x = this.g.adjacentNodes(node).size();
+            return x * (x - 1);
+        }).sum();
+        return (double) n / k;
+    }
+
+    /**
      * @return average clustering coefficient of nodes in the graph.
      */
     public double avgClusteringCoefficient() {
@@ -189,6 +204,7 @@ public class TriangleFinder<N extends Node> {
     /**
      * A TriangleFunnel specifically for the BloomFilter. For dumb reasons it won't accept the one that Triangle already
      * implements. Oh well.
+     *
      * @param <N>
      */
     static class TriangleFunnel<N extends Node> implements Funnel<Triangle<N>> {
